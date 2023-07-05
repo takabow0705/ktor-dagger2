@@ -1,4 +1,4 @@
-package com.github.Takabow0705.routes
+package com.github.takabow0705.routes
 
 import com.github.takabow0705.example.orderStorage
 import io.ktor.http.*

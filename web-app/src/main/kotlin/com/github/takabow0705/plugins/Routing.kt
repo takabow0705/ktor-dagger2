@@ -1,9 +1,9 @@
-package com.github.Takabow0705.plugins
+package com.github.takabow0705.plugins
 
-import com.github.Takabow0705.routes.customerRouting
-import com.github.Takabow0705.routes.getOrderRoute
-import com.github.Takabow0705.routes.listOrdersRoute
-import com.github.Takabow0705.routes.totalizeOrderRoute
+import com.github.takabow0705.routes.customerRouting
+import com.github.takabow0705.routes.getOrderRoute
+import com.github.takabow0705.routes.listOrdersRoute
+import com.github.takabow0705.routes.totalizeOrderRoute
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*

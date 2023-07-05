@@ -1,4 +1,4 @@
-package com.github.Takabow0705.plugins
+package com.github.takabow0705.plugins
 
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
