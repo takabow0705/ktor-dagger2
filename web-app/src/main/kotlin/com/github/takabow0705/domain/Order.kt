@@ -1,4 +1,4 @@
-package com.github.takabow0705.example
+package com.github.takabow0705.domain
 
 import kotlinx.serialization.Serializable
 

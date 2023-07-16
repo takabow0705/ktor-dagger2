@@ -17,9 +17,11 @@ repositories {
 dependencies {
     implementation(pluginLibs.gradle.kotlin)
     implementation(pluginLibs.gradle.kotlinx.serialization)
+    implementation(pluginLibs.gradle.kapt)
     implementation(pluginLibs.gradle.node)
     implementation(pluginLibs.gradle.protobuf)
     implementation(pluginLibs.gradle.spotless)
+
 }
 
 tasks.withType<Wrapper> {

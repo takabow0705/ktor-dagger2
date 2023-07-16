@@ -9,7 +9,7 @@ import kotlin.math.log
  * in the user manual at https://docs.gradle.org/7.4.2/userguide/multi_project_builds.html
  */
 
-rootProject.name = "kotlin-app"
+rootProject.name = "kotlin-dagger2"
 include("web-app")
 
 
@@ -29,6 +29,10 @@ dependencyResolutionManagement {
             library("ktor-netty", "io.ktor","ktor-server-netty-jvm").versionRef(ktorVersion)
             library("ktor-content","io.ktor","ktor-server-content-negotiation").versionRef(ktorVersion)
             library("ktor-serialization","io.ktor","ktor-serialization-kotlinx-json").versionRef(ktorVersion)
+
+            val dagger2Version = version("dagger2", "2.47")
+            library("dagger2", "com.google.dagger", "dagger").versionRef(dagger2Version)
+            library("dagger2-compiler", "com.google.dagger", "dagger-compiler").versionRef(dagger2Version)
 
             val logbackVersion = version("logback","1.2.11")
             library("logback","ch.qos.logback","logback-classic").versionRef(logbackVersion)

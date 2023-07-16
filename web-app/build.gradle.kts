@@ -5,6 +5,7 @@
 plugins {
     id("kotlin.custom.plugin")
     id("io.ktor.plugin") version "2.3.2"
+    kotlin("kapt")
 }
 
 dependencies {
@@ -17,10 +18,15 @@ dependencies {
     implementation(libs.postgres.driver)
     implementation(libs.logback)
     implementation(libs.ktor.core)
+    implementation(libs.dagger2)
+    //annotationProcessor(libs.dagger2.compiler)
     testImplementation(testLibs.kotlin.test.junit)
+
+    kapt(libs.dagger2.compiler)
+    //kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.6.2")
 }
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.github.Takabow0705.ApiServerKt")
+    mainClass.set("com.github.takabow0705.ApiServerKt")
 }

@@ -1,18 +1,19 @@
 package com.github.takabow0705.routes
 
-import com.github.takabow0705.example.Customer
-import com.github.takabow0705.example.customerStorage
+import com.github.takabow0705.controller.CustomerApiController
+import com.github.takabow0705.domain.Customer
+import com.github.takabow0705.domain.customerStorage
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
-fun Route.customerRouting() {
+fun Route.customerRouting(customerApiController: CustomerApiController) {
   route("/customer") {
     get {
       if (customerStorage.isNotEmpty()) {
-        call.respond(customerStorage)
+        call.respond(customerApiController.listCustomers())
       } else {
         call.respondText("No customer found", status = HttpStatusCode.OK)
       }
@@ -22,7 +23,7 @@ fun Route.customerRouting() {
         call.parameters["id"]
           ?: return@get call.respondText("Missing id", status = HttpStatusCode.BadRequest)
       val customer =
-        customerStorage.find { it.id == id }
+        customerApiController.getCustomer(id)
           ?: return@get call.respondText(
             "No customer with id $id",
             status = HttpStatusCode.NotFound
@@ -32,7 +33,7 @@ fun Route.customerRouting() {
     post {
       try {
         val customer = call.receive<Customer>()
-        customerStorage.add(customer)
+        customerApiController.createCustomer(customer)
         call.respondText("Customer stored correctly", status = HttpStatusCode.Created)
       } catch (e: Exception) {
         e.printStackTrace()
@@ -41,7 +42,7 @@ fun Route.customerRouting() {
     }
     delete("{id?}") {
       val id = call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)
-      if (customerStorage.removeIf { it.id == id }) {
+      if (customerApiController.deleteCustomer(id)) {
         call.respondText("Customer removed correctly", status = HttpStatusCode.Accepted)
       } else {
         call.respondText("Not Found", status = HttpStatusCode.NotFound)

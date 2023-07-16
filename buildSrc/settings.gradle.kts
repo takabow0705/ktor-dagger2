@@ -15,6 +15,9 @@ dependencyResolutionManagement {
             val protoVersion = version("proto", "0.9.+")
             library("gradle-protobuf", "com.google.protobuf", "protobuf-gradle-plugin").versionRef(protoVersion)
 
+            val kspVersion = version("kapt", "1.8.22")
+            library("gradle-kapt", "org.jetbrains.kotlin.kapt", "org.jetbrains.kotlin.kapt.gradle.plugin").versionRef(kspVersion)
+
             val spotlessVersion = version("spotless", "6.19.0")
             library("gradle-spotless","com.diffplug.spotless", "com.diffplug.spotless.gradle.plugin").versionRef(spotlessVersion)
         }
